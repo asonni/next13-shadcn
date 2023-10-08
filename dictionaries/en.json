@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "title": "Authentication",
+    "description": "Authentication forms built using the components."
+  },
+  "page": {
+    "auth": {
+      "login": "Login"
+    }
+  }
+}

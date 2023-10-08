@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
+import { Locale } from '@/i18n.config';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,12 +12,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
 
-export function ModeToggle() {
+type TModeToggle = {
+  lang: Locale;
+};
+
+export const ModeToggle = ({ lang }: TModeToggle) => {
   const { setTheme } = useTheme();
 
   return (
-    <div className="fixed bottom-5 left-5 shadow-2xl z-50">
+    <div
+      className={cn(
+        'fixed bottom-5 shadow-2xl z-50',
+        lang === 'en' ? 'right-5' : 'left-5'
+      )}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
@@ -39,4 +50,4 @@ export function ModeToggle() {
       </DropdownMenu>
     </div>
   );
-}
+};
