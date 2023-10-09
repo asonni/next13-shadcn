@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
 
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { UserAuthForm } from '@/components/user-auth-form';
-import { Locale } from '@/i18n.config';
-import { getDictionary } from '@/lib/dictionary';
+import { TLang } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Authentication',
@@ -12,15 +12,13 @@ export const metadata: Metadata = {
 };
 
 type TAuthenticationPage = {
-  params: { lang: Locale };
+  params: { lang: TLang };
 };
 
-const AuthenticationPage = async ({
-  params: { lang }
-}: TAuthenticationPage) => {
-  const dict = await getDictionary(lang);
-  metadata.title = dict.metadata.title;
-  metadata.description = dict.metadata.description;
+const AuthenticationPage = ({ params: { lang } }: TAuthenticationPage) => {
+  const t = useTranslations();
+  metadata.title = t('metadata.title');
+  metadata.description = t('metadata.description');
 
   return (
     <div className="container relative hidden h-full flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -57,27 +55,27 @@ const AuthenticationPage = async ({
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              {dict.authPage.createAccount}
+              {t('authPage.createAccount')}
             </h1>
             <p className="text-sm text-muted-foreground">
-              {dict.authPage.enterYourEmail}
+              {t('authPage.enterYourEmail')}
             </p>
           </div>
-          <UserAuthForm dict={dict.authPage} />
+          <UserAuthForm />
           <p className="px-8 text-center text-sm text-muted-foreground">
-            {dict.authPage.byClickingContinue}{' '}
+            {t('authPage.byClickingContinue')}{' '}
             <Link
               href="/terms"
               className="underline underline-offset-4 hover:text-primary"
             >
-              {dict.authPage.termsOfService}
+              {t('authPage.termsOfService')}
             </Link>{' '}
-            {dict.authPage.and}{' '}
+            {t('authPage.and')}{' '}
             <Link
               href="/privacy"
               className="underline underline-offset-4 hover:text-primary"
             >
-              {dict.authPage.privacyPolicy}
+              {t('authPage.privacyPolicy')}
             </Link>
             .
           </p>

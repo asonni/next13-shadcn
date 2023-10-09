@@ -1,17 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-type TUserAuthFormProps = {
-  dict: Record<string, string>;
-};
-
-export const UserAuthForm = async ({ dict }: TUserAuthFormProps) => {
+export const UserAuthForm = () => {
+  const t = useTranslations();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = async (event: React.SyntheticEvent) => {
@@ -29,7 +27,7 @@ export const UserAuthForm = async ({ dict }: TUserAuthFormProps) => {
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-              {dict.email}
+              {t('authPage.email')}
             </Label>
             <Input
               id="email"
@@ -45,7 +43,7 @@ export const UserAuthForm = async ({ dict }: TUserAuthFormProps) => {
             {isLoading && (
               <Icons.spinner className="mx-2 h-4 w-4 animate-spin" />
             )}
-            {dict.signinWithEmail}
+            {t('authPage.signinWithEmail')}
           </Button>
         </div>
       </form>
@@ -55,7 +53,7 @@ export const UserAuthForm = async ({ dict }: TUserAuthFormProps) => {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            {dict.orContinueWith}
+            {t('authPage.orContinueWith')}
           </span>
         </div>
       </div>
