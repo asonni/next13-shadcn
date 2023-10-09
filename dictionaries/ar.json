@@ -3,9 +3,16 @@
     "title": "المصادقة",
     "description": "يتم إنشاء نماذج المصادقة باستخدام المكونات."
   },
-  "page": {
-    "auth": {
-      "login": "تسجيل الدخول"
-    }
+  "authPage": {
+    "email": "البريد الإلكتروني",
+    "createAccount": "إنشاء حساب",
+    "enterYourEmail": "أدخل بريدك الإلكتروني أدناه لإنشاء حسابك",
+    "signinWithEmail": "تسجيل الدخول باستخدام البريد الإلكتروني",
+    "orContinueWith": "أو الاستمرار مع",
+    "termsOfService": "شروط الخدمة",
+    "privacyPolicy": "سياسة الخصوصية",
+    "byClickingContinue": "بالنقر فوق متابعة، فإنك توافق على لدينا",
+    "and": "و",
+    "or": "أو"
   }
 }

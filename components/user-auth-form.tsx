@@ -1,17 +1,18 @@
 'use client';
 
-import * as React from 'react';
+import { useState } from 'react';
 
-import { cn } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+type TUserAuthFormProps = {
+  dict: Record<string, string>;
+};
 
-export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+export const UserAuthForm = async ({ dict }: TUserAuthFormProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -23,12 +24,12 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
   };
 
   return (
-    <div className={cn('grid gap-6', className)} {...props}>
+    <div className="grid gap-6">
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-              Email
+              {dict.email}
             </Label>
             <Input
               id="email"
@@ -44,7 +45,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
             {isLoading && (
               <Icons.spinner className="mx-2 h-4 w-4 animate-spin" />
             )}
-            Sign In with Email
+            {dict.signinWithEmail}
           </Button>
         </div>
       </form>
@@ -54,7 +55,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
+            {dict.orContinueWith}
           </span>
         </div>
       </div>

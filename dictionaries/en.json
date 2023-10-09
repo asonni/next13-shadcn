@@ -3,9 +3,16 @@
     "title": "Authentication",
     "description": "Authentication forms built using the components."
   },
-  "page": {
-    "auth": {
-      "login": "Login"
-    }
+  "authPage": {
+    "email": "Email",
+    "createAccount": "Create an account",
+    "enterYourEmail": "Enter your email below to create your account",
+    "signinWithEmail": "Sign in with Email",
+    "orContinueWith": "Or Continue With",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "byClickingContinue": "By clicking continue, you agree to our",
+    "and": "and",
+    "or": "or"
   }
 }

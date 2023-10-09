@@ -20,18 +20,17 @@ export const generateStaticParams = async () => {
   return i18n.locales.map(locale => ({ lang: locale }));
 };
 
-const RootLayout = ({
-  children,
-  params
-}: {
+type TRootLayout = {
   children: React.ReactNode;
   params: { lang: Locale };
-}) => {
+};
+
+const RootLayout = ({ children, params }: TRootLayout) => {
   return (
     <html
-      dir={params.lang === 'en' ? 'ltr' : 'rtl'}
       lang={params.lang}
       suppressHydrationWarning
+      dir={params.lang === 'en' ? 'ltr' : 'rtl'}
     >
       <body
         suppressHydrationWarning
@@ -41,9 +40,9 @@ const RootLayout = ({
         )}
       >
         <ThemeProvider
+          enableSystem
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
         >
           {children}
